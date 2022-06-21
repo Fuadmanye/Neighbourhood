@@ -1,0 +1,39 @@
+body {
+    background-color: hsl(210, 36%, 96%);
+}
+.row-shadow  {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    background-color: #112433;
+    border-radius: 12px;
+    padding: 1rem;
+}
+legend {
+    text-align: center;
+    text-transform: uppercase;
+    color: white;
+}
+.d-flex .form-control-sm{
+    background-color:rgba(0,0,0,0) !important;
+    border:none !important;
+ }
+
+ /* business styles */
+ .business {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    border-radius: 12px;
+    background-color: #112433;
+    padding: 1rem;
+ }
+ .business-information ul li {
+     list-style-type: none;
+ }
+ .owner:hover {
+     color: blue;
+     transition: 0.5s;
+ }
+ /* end business styless */
+
+h4  {
+    text-transform: uppercase;
+    font-family: 'roboto', sans-serif;
+}
