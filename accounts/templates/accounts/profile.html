@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %} {{request.user.username}} - profile {% endblock %}
+
+{% block content %}
+<div class="container">
+
+<div class="row">
+    <div class="col-md-8 " style="margin: auto;">
+        {% for details in profile %}
+            <div class="card-body little-profile text-center">
+                <div class="pro-img" ><img src="{{prof.avatar.url}}" alt="user" style="max-width: 180px;"></div>
+                <h5 class="m-b-0">{{details.user.username}}</h5>
+                <h5 class="m-b-0">{{details.user.email}}</h5>
+                <h5 class="m-b-0"><span>{{details.user.first_name}}</span> <span>{{details.user.last_name}}</span></h5>
+                <h5 class="m-b-0">{{details.user.phone_number}}</h5>
+
+                {% if prof.bio is not None %}
+                <p>{{prof.bio}}</p>
+                {% endif %}
+                {% if request.user.id == details.user.id %} 
+                <a href="{% url 'edit' %}" class="m-t-10 waves-effect waves-dark btn btn-primary btn-sm btn-rounded" data-abc="true">Edit Profile</a>
+                {% else %}
+                {% endif %}
+            </div>
+            <hr>
+            <h5 class="text-center" style="font-weight: bold;">BUSINESS</h5>
+            <hr>
+            <div class="row">
+                {% for biza in business %}
+                <div class="card business d-flex justify-content-start mt-2">
+                    <div class="image">
+                        <img src="{{biza.image.url}}" class="card-img-top" alt="business image" height="200">
+                    </div>
+                    <div class="mt-2" style="color: inherit;">
+                        <p><span class="text-success" style="font-weight:bold;">Owner:</span><span
+                                style="color: white; font-size:1.1rem;font-weight:bold"><a href="" class="owner"
+                                    style="text-decoration: none;color:white">{{biza.user.username}}</a></span></p>
+                        <ul class="list-group list-group-flush">
+                            <p><span class="text-success" style="font-weight:bold;">Category:</span><span
+                                    style="color: white; font-size:1.1rem"> {{ biza.category }}</span></p>
+                            <p><span class="text-success" style="font-weight:bold;">Name:</span> <span
+                                    style="color: white; font-size:1.1rem"> {{biza.name}}</span> </p>
+                            <p><span class="text-success" style="font-weight:bold;">Location:</span><span
+                                    style="color: white; font-size:1.1rem"> {{biza.location.name}}</span> </p>
+                        </ul>
+                    </div>
+                </div>
+                
+                {% endfor %}
+            </div>
+           
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
